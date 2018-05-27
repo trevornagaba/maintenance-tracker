@@ -1,0 +1,25 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+    background-color: #c8e6c9;
+}
+
+.welcome {
+    position: relative;
+    left: 160px;
+    width: 80%;
+}
+
+.image {
+    position: relative;
+    width: 75%;
+    height: auto;
+}
+
+#welcome {
+    position: relative;
+    left: 5px;
+}
