@@ -38,3 +38,9 @@ a {
     width: 10%;
     text-align: left;
 }
+
+.filter {
+    position: relative;
+    float: right;
+    right: 507px;
+}
