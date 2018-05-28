@@ -28,3 +28,9 @@ body {
     text-align: left;
     width: 10%;
 }
+
+.filter {
+    position: relative;
+    float: right;
+    right: 675px;
+}
