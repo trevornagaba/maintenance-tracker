@@ -32,6 +32,21 @@
         <!-- Table for requests-->
         <div class = 'requests-table'>
             <h2>My Requests</h2>
+
+            <!--Search input field-->
+            <input type = 'text' id = 'search' onkeyup= "searchFunction()" placeholder= "Search">
+
+            <!--Filter content-->
+            <span class = "filter">Filter:
+                <select>
+                    <option value="default">Default</option>
+                    <option value="submitted">Submitted</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+            </span>
+            
             <table id = 'requests-table'>
                 <tr>
                     <th id = 'details'><strong>Device details</strong></td>

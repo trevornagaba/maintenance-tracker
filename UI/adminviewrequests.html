@@ -22,7 +22,6 @@
         
             <!-- Side navigation bar-->
             <div class="sidenav">
-                <a href="./myrequests.html">View Requests</a>
                 <a href="./index.html">Log out</a>
                 <a href="./about.html">About</a>
             </div>
@@ -32,7 +31,19 @@
         <div class = 'requests-table'>
             <h2>View Requests</h2>
 
+            <!--Search input field-->
             <input type = 'text' id = 'search' onkeyup= "searchFunction()" placeholder= "Search">
+            
+            <!--Filter content-->
+            <span class = "filter">Filter:
+                <select>
+                    <option value="default">Default</option>
+                    <option value="submitted">Submitted</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+            </span>
 
             <table id = 'myTable'>
                 <tr>
