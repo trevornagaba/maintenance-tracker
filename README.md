@@ -13,8 +13,8 @@ A user can use the application to initiate a request to a malfunctioning device.
 ## Installation
 No installation is required at this stage.
 ## Built With
-1.HTML5
-1.CSS
+1. HTML5
+1. CSS
 ## Authors
 Nagaba Trevor
 ## Licensing
