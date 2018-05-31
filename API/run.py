@@ -41,11 +41,12 @@ def create_requests():
 def view_requests():
         return jsonify(
                 {
+                'number of requests': len(requests),
                 'status':'OK', 
                 'message':'successful',
-                'requests': [json.dumps(a_request.__dict__) for a_request in requests]
+                'requests': [my_requests.__dict__ for my_requests in requests]
                 }
-            ), 201
+            ), 200
 
 #Fetch a request that belongs to a logged in user
 @app.route('/v1/users/requests/<id>', methods = ['GET'])
@@ -64,7 +65,7 @@ def view_user_requests(id):
                 'device-status': requests[id_number-1].get_device_status(),
                 'id': requests[id_number-1].id
                 }
-            ), 201
+            ), 200
     except  ValueError:
         return jsonify(
             {
@@ -87,6 +88,13 @@ def modify_requests(id):
     data = request.get_json()
     id_number = int(id)
     # 2. validate the data
+    if data['device_type'] == "":
+        return jsonify (
+            {
+                'status': 'OK',
+                'message': 'Please enter a request'
+        }
+        )
     try:
         if isinstance(data['device_type'].encode(), str) and isinstance(data['fault_description'].encode(), str) and isinstance(data['device_status'].encode(), str)and isinstance(id_number, int):
             # 3. Store the data 
@@ -103,7 +111,8 @@ def modify_requests(id):
                 'request-id': id,
                 'device-status': requests[id_number-1].get_device_status()
                 }
-            ), 201
+            ), 200
+            
     except AttributeError:
         return jsonify(
             {
