@@ -1,6 +1,6 @@
 language: python
 python:
-  - "3.6.1"
+  - "2.7.13"
 
 install:
   - pip install -r requirements.txt
