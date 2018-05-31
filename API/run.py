@@ -92,7 +92,7 @@ def modify_requests(id):
             # 3. Store the data 
             requests[id_number-1].device_type = data['device_type'].encode()
             requests[id_number-1].fault_description = data['fault_description'].encode()
-            requests[id_number-1].device_type = data['device_status'].encode()
+            requests[id_number-1].device_status = data['device_status'].encode()
 
             return jsonify(
                 {
