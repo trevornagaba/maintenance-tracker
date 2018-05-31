@@ -3,3 +3,4 @@ tracker-env/
 __pycache__/
 .pytest_cache/
 models.pyc
+run.pyc
