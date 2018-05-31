@@ -29,13 +29,27 @@ class MyTests(TestCase):
     #Fetch all the requests of a logged in user
     def test_view_requests(self):
         with self.client:
+            post_data = (
+                { 
+                    "device_type":"laptop",
+                    "fault_description": "Battery malfunctioning",
+                    "device_status": "Submitted"
+                }
+            )
+            response = self.client.post(
+                '/v1/users/requests', 
+                content_type = 'application/json', 
+                data = json.dumps(dict(post_data))
+            )            
             response = self.client.get(
                 '/v1/users/requests',
                 content_type = 'application/json'
                 )
             reply = json.loads(response.data.decode())
+            self.assertEquals(reply['number of requests'], 3) 
+            self.assertEquals(reply['requests'][0]['id'], 1) 
             self.assertEquals(reply['message'], 'successful') 
-            self.assertEquals(response.status_code, 201)
+            self.assertEquals(response.status_code, 200)
 
     #Fetch a request that belongs to a logged in user
     def test_view_user_request(self):
@@ -52,6 +66,7 @@ class MyTests(TestCase):
                 content_type = 'application/json', 
                 data = json.dumps(dict(post_data))
             )
+            #remove content type
             response_1 = self.client.get(
                 '/v1/users/requests/1', 
                 content_type = 'application/json'
@@ -59,7 +74,7 @@ class MyTests(TestCase):
             reply = json.loads(response_1.data.decode()) 
             self.assertTrue(reply['device-status'] in ['Submitted', 'Rejected', 'Approved', 'Resolved'], True)
             self.assertEquals(reply['message'], 'successful')
-            self.assertTrue(response.status_code, 201)
+            self.assertTrue(response.status_code, 200)
 
     #Modify a request
     def test_modify_request(self):
@@ -92,4 +107,4 @@ class MyTests(TestCase):
             reply = json.loads(response2.data.decode())
             self.assertTrue(reply['device-status'] in ['Submitted', 'Rejected', 'Approved', 'Resolved'], True)
             self.assertEquals(reply['device-type'], 'computer')
-            self.assertEquals(response2.status_code, 201)
+            self.assertEquals(response2.status_code, 200)
