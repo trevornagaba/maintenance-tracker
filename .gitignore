@@ -4,3 +4,4 @@ __pycache__/
 .pytest_cache/
 models.pyc
 run.pyc
+__init__.pyc
