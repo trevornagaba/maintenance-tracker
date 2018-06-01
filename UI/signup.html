@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Tracker</title>
+    <link rel = 'stylesheet' type = 'text/css' href = 'static\css\forms.css'>
+    <link rel = 'stylesheet' type = 'text/css' href = 'static\css\mainlayout.css'>
+    <script src = 'static\js\myscript.js'></script>
+</head>
+<body>
+    <div>
+        <div id = 'navigation'>
+            <!-- Top navigation bar-->
+            <div class="topnav">
+                <a class="home" href="./index.html">MAINTENANCE TRACKER</a>
+                <a href="./adminlogin.html">ADMIN LOGIN</a>
+                <a href="./login.html">LOG IN</a>
+                <a href="./signup.html">SIGN UP</a>
+            </div>
+        
+            <!-- Side navigation bar-->
+            <div class="sidenav">
+                <a href="./about.html">About</a>
+            </div>
+        </div>
+        
+        <!-- Signup form-->
+        <form id = 'signup-form' class = 'form'>
+            <h2>Signup</h2>
+            <!--Create username-->
+            <div class = 'input-field'>
+                <label class = 'label'>Username</label><br />
+                <input class = 'username' type = 'text' placeholder = 'Create Username' /> 
+            </div>
+
+            <!--Create password-->
+            <div class = 'input-field'>
+                <label class = 'label'>Password</label><br />
+                <input class = 'password' type = 'text' placeholder = 'Create Password' /> 
+            </div>
+
+            <!--Re-enter password-->
+            <div class = 'input-field'>
+                    <label class = 'label'>Password</label><br />
+                    <input class = 'password' type = 'text' placeholder = 'Re-enter Password' /> 
+                </div>    
+
+            <!--Signup button-->
+            <div class = 'submit-button'>
+                <button class = 'signup-button'>SIGNUP</button>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

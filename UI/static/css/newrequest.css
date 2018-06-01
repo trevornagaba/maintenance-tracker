@@ -1,0 +1,49 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    background-color: #c8e6c9;
+}
+
+.new-request-form {
+    position: relative;
+    left: 180px;
+}
+
+.device-type {
+    padding-top: 0px;
+}
+
+.fault-description {
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.submit-button {
+    padding-top: 5px;
+    padding-bottom: 5px;
+    padding-right: 20px;
+}
+
+.device-type label.device-type{
+    width: 400px;
+}
+
+
+.device-type input.device-type{
+    width: 400px;
+    padding: 5px;
+}
+
+.fault-description label.device-type{
+    width: 400px;
+}
+
+.fault-description input.fault-description{
+    width: 400px;
+    padding: 5px;
+}
+
+

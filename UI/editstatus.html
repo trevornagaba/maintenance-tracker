@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Tracker</title>
+    <link rel = 'stylesheet' type = 'text/css' href = 'static\css\editstatus.css'>
+    <link rel = 'stylesheet' type = 'text/css' href = 'static\css\mainlayout.css'>
+    <script src = 'static\js\myscript'></script>
+</head>
+<body>
+    <div>
+
+        <div id = 'navigation'>
+            <!-- Top navigation bar-->
+            <div class="topnav">
+                <a class="home" href="./index.html">MAINTENANCE TRACKER</a>
+                <a href="./adminlogin.html">ADMIN LOGIN</a>
+                <a href="./login.html">LOG IN</a>
+                <a href="./signup.html">SIGN UP</a>
+            </div>
+        
+            <!-- Side navigation bar-->
+            <div class="sidenav">
+                <a href="./myrequests.html">View Requests</a>
+                <a href="./index.html">Log out</a>
+                <a href="./about.html">About</a>
+            </div>
+        </div>
+
+        <div class = 'edit-status'>
+
+            <!--Device details-->
+            <div class = 'details'>            
+                <h2>Edit Status</h2>
+                <p><strong>ID: </strong>#h2435bbfa5e2124</p>
+                <p><strong>Device type: </strong>Laptop</p>
+                <p><strong>Details: </strong>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna neque, <br /> 
+                    porttitor vel felis vehicula, maximus malesuada nisi</p>
+            </div>
+            
+            <!--Request status-->
+            <div class = 'status'>
+                
+                <!--Toggle request status-->
+                <div>
+                    <p class = 'label'><strong>Status: </strong>Submitted</p>
+                    <input class = 'password' type = 'radio' name = 'status' value = 'Rejected'>Reject <br />
+                    <input class = 'password' type = 'radio' name = 'status' value = 'Approved'>Approve <br />
+                    <input class = 'password' type = 'radio' name = 'status' value = 'Resolved'>Resolve <br /> 
+                </div>
+            
+                <!--Update button-->
+                <div class = 'update-button'>
+                    <button><a href = './adminviewrequests.html'>UPDATE</a></button>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

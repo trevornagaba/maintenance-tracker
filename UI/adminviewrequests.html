@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Maintenance Tracker</title>
+    <link rel = 'stylesheet' type = 'text/css' href = 'static/css/adminviewrequests.css'>
+    <link rel = 'stylesheet' type = 'text/css' href = 'static/css/mainlayout.css'>
+    <script src = 'static\js\myscript.js'></script>
+</head>
+<body>
+    <div>
+        
+        <div id = 'navigation'>
+            <!-- Top navigation bar-->
+            <div class="topnav">
+                <a class="home" href="./home.html">MAINTENANCE TRACKER</a>
+                <a href="./adminlogin.html">ADMIN LOGIN</a>
+                <a href="./login.html">LOG IN</a>
+                <a href="./signup.html">SIGN UP</a>
+            </div>
+        
+            <!-- Side navigation bar-->
+            <div class="sidenav">
+                <a href="./index.html">Log out</a>
+                <a href="./about.html">About</a>
+            </div>
+        </div>
+
+        <!--Table for all requests-->
+        <div class = 'requests-table'>
+            <h2>View Requests</h2>
+
+            <!--Search input field-->
+            <input type = 'text' id = 'search' onkeyup= "searchFunction()" placeholder= "Search">
+            
+            <!--Filter content-->
+            <span class = "filter">Filter:
+                <select>
+                    <option value="default">Default</option>
+                    <option value="submitted">Submitted</option>
+                    <option value="approved">Approved</option>
+                    <option value="rejected">Rejected</option>
+                    <option value="resolved">Resolved</option>
+                </select>
+            </span>
+
+            <table id = 'myTable'>
+                <tr>
+                    <th id = 'ID'><strong>ID</strong></th>
+                    <th id = 'details'><strong>Device details</strong></th>
+                    <th id = 'status'><strong>Status</strong></th>
+                </tr>
+
+                <tr>
+                    <td>#hacefb452832</td>
+                    <td>Laptop</td>
+                    <td><a href = './editstatus.html'>Submitted</a></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna neque,  
+                        porttitor vel felis vehicula, maximus malesuada nisi.</small></td>
+                    
+                </tr>
+
+                <tr>
+                    <td>#aefch7ee368293d</td>
+                    <td>Galaxy S6</td>
+                    <td><a href = './editstatus.html'>Approved</a></td>
+                </tr>
+
+                <tr>
+                    <td></td>
+                    <td><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna neque, <br /> 
+                        porttitor vel felis vehicula, maximus malesuada nisi.</small></td>
+                </tr>
+
+                <tr>
+                    <td>#dceefa5382d635ca7</td>
+                    <td>Projector</td>
+                    <td><a href = './editstatus.html'>Submitted</a></td>
+                </tr>
+        
+                <tr>
+                    <td></td>
+                    <td><small>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Donec magna neque, <br /> 
+                        porttitor vel felis vehicula, maximus malesuada nisi.</small></td>
+                </tr>
+        
+            </table>
+        </div>
+    </div>
+</body>
+</html>
