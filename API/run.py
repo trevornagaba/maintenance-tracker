@@ -13,6 +13,13 @@ def create_requests():
     # Retrieve the data
     data = request.get_json()
     # Validate the data
+    if data['device_type'] == "" or data['fault_description'] == "" or data['device_status'] == "":
+        return jsonify (
+            {
+                'status': 'FAILED',
+                'message': 'One of the required fields is empty'
+        }
+        ), 400
     try:
         if isinstance(data['device_type'].encode(), str) and isinstance (data['fault_description'].encode(), str) and isinstance (data['device_status'].encode(), str):
             # Create id and store the data
@@ -32,7 +39,7 @@ def create_requests():
         return jsonify(
             {
                 'status':'FAILED',
-                'message': 'Invalid request',
+                'message': 'Invalid request. Please check your entry',
             }
         ), 400
 
@@ -51,10 +58,10 @@ def view_requests():
 #Fetch a request that belongs to a logged in user
 @app.route('/v1/users/requests/<id>', methods = ['GET'])
 def view_user_requests(id):
-    # Convert id to integer 
-    id_number = int(id)
-    # Validate request
-    try: 
+    try:     
+        # Convert id to integer 
+        id_number = int(id)
+        # Validate request
         if isinstance(id_number, int):
             return jsonify(
                 {
@@ -66,6 +73,7 @@ def view_user_requests(id):
                 'id': requests[id_number-1].id
                 }
             ), 200
+    # Catch none integer input
     except  ValueError:
         return jsonify(
             {
@@ -73,6 +81,7 @@ def view_user_requests(id):
                 'message':'Invalid request id'
             }
         ), 400
+    # Catch request for non-existent id
     except IndexError:
         return jsonify(
             {
@@ -84,20 +93,20 @@ def view_user_requests(id):
 #Modify a request
 @app.route('/v1/users/requests/<id>', methods = ['PUT'])
 def modify_requests(id):
-    # 1. Capture data from the request
+    # Retrieve the request
     data = request.get_json()
-    id_number = int(id)
-    # 2. validate the data
-    if data['device_type'] == "":
+    # Validate the data
+    if data['device_type'] == "" or data['fault_description'] == "" or data['device_status'] == "":
         return jsonify (
             {
                 'status': 'OK',
-                'message': 'Please enter a request'
+                'message': 'One of the required fields is empty'
         }
         )
     try:
-        if isinstance(data['device_type'].encode(), str) and isinstance(data['fault_description'].encode(), str) and isinstance(data['device_status'].encode(), str)and isinstance(id_number, int):
-            # 3. Store the data 
+        id_number = int(id)
+        if isinstance(data['device_type'].encode(), str) and isinstance(data['fault_description'].encode(), str) and isinstance(data['device_status'].encode(), str) and isinstance(id_number, int):
+            # Store the data 
             requests[id_number-1].device_type = data['device_type'].encode()
             requests[id_number-1].fault_description = data['fault_description'].encode()
             requests[id_number-1].device_status = data['device_status'].encode()
@@ -111,8 +120,7 @@ def modify_requests(id):
                 'request-id': id,
                 'device-status': requests[id_number-1].get_device_status()
                 }
-            ), 200
-            
+            ), 200    
     except AttributeError:
         return jsonify(
             {
@@ -128,6 +136,6 @@ def modify_requests(id):
             }
         ), 400
 
-
+# Run the flask application
 if __name__ == '__main__':
     app.run(debug = 'True')   
