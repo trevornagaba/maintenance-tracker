@@ -7,6 +7,53 @@ class MyTests(TestCase):
     def create_app(self):
         return app
 
+    # Test the signup a user endpoint
+    def test_signup(self):
+        with self.client:
+            post_data = (
+                {
+                    'username': 'bebeto',
+                    'password': 'secret',
+                    'reenter_password': 'secret'
+                }
+            )
+            response = self.client.post(
+                'v1/users/signup',
+                content_type = 'application/json',
+                data = json.dumps(post_data)
+            )
+            reply = json.loads(response.data.decode())
+            self.assertEquals(reply['username'], 'bebeto')
+            self.assertEquals(response.status_code, 201)
+    # Test the login a user endpoint
+    def test_login(self):
+        with self.client:
+            signup_data = (
+                {
+                    'username': 'bebeto',
+                    'password': 'secret',
+                    'reenter_password': 'secret'
+                }
+            )
+            self.client.post(
+                'v1/users/signup',
+                content_type = 'application/json',
+                data = json.dumps(signup_data)
+            )
+            login_data = (
+                {
+                    'username': 'bebeto',
+                    'password': 'secret',
+                }
+            )
+            response = self.client.post(
+                'v1/users/login',
+                content_type = 'application/json',
+                data = json.dumps(login_data)
+            )
+            reply = json.loads(response.data.decode())
+            self.assertEquals(reply['message'], 'User successfully logged in')
+    
     # Test the create a request endpoint
     def test_create_requests(self):
         with self.client:
