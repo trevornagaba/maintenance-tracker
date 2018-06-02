@@ -1,11 +1,60 @@
 from flask import Flask, request, jsonify
-from models import Request
+from models import Request, User
 import json
 
 # A list to store requests
 requests = []
+users = []
 
 app = Flask(__name__)
+
+# Register a user
+@app.route('/v1/users/signup', methods = ['POST'])
+def signup():
+    #Retrieve the data
+    data = request.get_json()
+    # Validate the data
+    if not data['username']:
+        return jsonify ({ 'message': 'Please enter your username' }), 400
+    if not data['password']:
+        return jsonify ({'messgae': 'Please enter your password'}), 400
+    if not data['reenter_password']:
+        return jsonify ({'message': 'Please re-enter your password'}), 400
+
+    if data['password'] != data['reenter_password']:
+        return jsonify ({'message': 'Your passwords do not match'}), 400
+
+    user = User(data['username'], data['password'], data['reenter_password'])
+    users.append(user)
+    return jsonify (
+        {
+            'status': 'OK',
+            'message': 'User registered',
+            'username': users[-1].get_username(),
+            'number of users': len(users)
+        }
+    ), 201
+
+# Login a user
+@app.route('/v1/users/login', methods = ['POST'])
+def login():
+    # Retrieve the data
+    data = request.get_json()
+    # Validate the data
+    if not data['username']:
+        return jsonify ({ 'message': 'Please enter your username' }), 400
+    if not data['password']:
+        return jsonify ({'messgae': 'Please enter your password'}), 400
+    
+    if len(users) > 0:
+        for userz in users:
+            print(data['password'])
+            if userz.get_password() == data['password']:
+                return jsonify ({'message': 'User successfully logged in'}), 201
+        print (data['password'])
+        return jsonify({'message': 'Incorrect password'})
+
+    return jsonify({'message': 'No users have been registered'})
 
 #Create a request
 @app.route('/v1/users/requests', methods = ['POST'])
@@ -31,8 +80,8 @@ def create_requests():
                     'status':'OK',
                     'message': 'Request created successfully',
                     'id': id,
-                    'device-status': requests[id-1].get_device_status(),
-                    'device-type': requests[id-1].get_device_type()
+                    'device-status': requests[-1].get_device_status(),
+                    'device-type': requests[-1].get_device_type()
                 }
             ), 201
     except AttributeError:
