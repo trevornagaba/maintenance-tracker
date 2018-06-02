@@ -1,15 +1,19 @@
 requests = []
 
 class User():
-    def __init__(self, username, password):
+    def __init__(self, username, password, reenter_password):
         self.username = username
-        self.email = password
+        self.password = password
+        self.reenter_password = reenter_password
 
     def get_username(self):
         return self.username
 
     def get_password(self):
         return self.password
+
+    def get_reenter_password(self):
+        return self.reenter_password
 
 class Request():
     def __init__(self, id, device_type, fault_description, device_status):
