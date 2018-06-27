@@ -4,11 +4,10 @@
 
 body {
     font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
-    background-color: #c8e6c9;
 }
 
 .new-request-form {
-    position: relative;
+    position: absolute;
     left: 180px;
 }
 
