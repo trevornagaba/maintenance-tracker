@@ -17,7 +17,7 @@ def signup():
     if not data['username']:
         return jsonify ({ 'message': 'Please enter your username' }), 400
     if not data['password']:
-        return jsonify ({'messgae': 'Please enter your password'}), 400
+        return jsonify ({'message': 'Please enter your password'}), 400
     if not data['reenter_password']:
         return jsonify ({'message': 'Please re-enter your password'}), 400
 
@@ -44,7 +44,7 @@ def login():
     if not data['username']:
         return jsonify ({ 'message': 'Please enter your username' }), 400
     if not data['password']:
-        return jsonify ({'messgae': 'Please enter your password'}), 400
+        return jsonify ({'message': 'Please enter your password'}), 400
     
     if len(users) > 0:
         for userz in users:
@@ -52,7 +52,7 @@ def login():
             if userz.get_password() == data['password']:
                 return jsonify ({'message': 'User successfully logged in'}), 201
         print (data['password'])
-        return jsonify({'message': 'Incorrect password'})
+        return jsonify({'message': 'Incorrect password'}), 400
 
     return jsonify({'message': 'No users have been registered'})
 
